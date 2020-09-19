@@ -12,4 +12,4 @@ npm-debug.log
 yarn-error.log
 /public/*
 /public/js/*
-/
+docker/qr-code-scanner-container/docker/data/*

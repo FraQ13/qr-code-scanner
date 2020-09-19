@@ -8,6 +8,12 @@ services:
       - ${PHP_INI-./docker/config/php/php.ini}:/usr/local/etc/php/php.ini
       - ${VHOSTS_DIR-./docker/config/webserver/ports/ports.conf}:/etc/apache2/ports.conf
       - ${LOG_DIR-./docker/logs/apache2}:/var/log/apache2
+    container_name: qr-webserver-${ENV_NAME}
+    volumes: 
+      - ${VHOSTS_DIR-./dev/config/webserver/vhosts}:/etc/apache2/sites-enabled
+    ports:
+      - "9216:80"
+      - "9218:443"
   mysql:
     build: ./docker/bin/mysql
     environment:
@@ -20,6 +26,9 @@ services:
      - ./docker/data/mysql:/var/lib/mysql
      - ./docker/logs/mysql:/var/log/mysql
      - ./docker/bin/mysql/init/:/docker-entrypoint-initdb.d
+    container_name: qr-mysql-${ENV_NAME}
+    ports:
+      - "9217:3306"
 volumes:
   data01:
     driver: local

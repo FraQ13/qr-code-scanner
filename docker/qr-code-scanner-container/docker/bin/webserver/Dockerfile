@@ -23,16 +23,10 @@ RUN docker-php-ext-install intl \
 
 # Other PHP7 Extensions
 RUN docker-php-ext-install  pdo_mysql  \
-                            pdo_sqlite \
-                            mysqli \
                             tokenizer \
-                            json \
-                            mbstring \
-                            gettext
+                            json
 
 RUN apt-get install -y libfreetype6-dev libjpeg62-turbo-dev libpng-dev
-RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
-RUN docker-php-ext-install gd
 
 # install process control system
 RUN apt -y install supervisor
@@ -64,8 +58,8 @@ USER docker
 RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 RUN sudo apt-get update
 RUN sudo apt -y install nodejs
-RUN sudo npm install -g n
-RUN sudo n 8.10.0
+# RUN sudo npm install -g n
+# RUN sudo n 8.10.0
 
 RUN bash
 
