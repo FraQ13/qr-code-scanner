@@ -13,3 +13,5 @@ yarn-error.log
 /public/*
 /public/js/*
 docker/qr-code-scanner-container/docker/data/*
+docker/qr-code-scanner-container/docker/logs/apache2/*
+docker/qr-code-scanner-container/docker/logs/apache2/*

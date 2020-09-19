@@ -56,10 +56,9 @@ USER docker
 
 # Install NodeJs
 RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-RUN sudo apt-get update
-RUN sudo apt -y install nodejs
-# RUN sudo npm install -g n
-# RUN sudo n 8.10.0
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y nodejs \
+    npm                   
 
 RUN bash
 

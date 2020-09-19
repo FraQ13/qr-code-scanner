@@ -4,13 +4,11 @@ services:
     build: ./docker/bin/webserver
     restart: 'always'
     volumes: 
-      - ${DOCUMENT_ROOT-../../}:/var/www/html:cached
+      - ${DOCUMENT_ROOT-./../../}:/var/www/html:cached
       - ${PHP_INI-./docker/config/php/php.ini}:/usr/local/etc/php/php.ini
-      - ${VHOSTS_DIR-./docker/config/webserver/ports/ports.conf}:/etc/apache2/ports.conf
+      - ${VHOSTS_DIR-./dev/config/webserver/vhosts}:/etc/apache2/sites-enabled
       - ${LOG_DIR-./docker/logs/apache2}:/var/log/apache2
     container_name: qr-webserver-${ENV_NAME}
-    volumes: 
-      - ${VHOSTS_DIR-./dev/config/webserver/vhosts}:/etc/apache2/sites-enabled
     ports:
       - "9216:80"
       - "9218:443"
